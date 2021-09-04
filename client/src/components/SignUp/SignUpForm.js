@@ -24,7 +24,7 @@ const SignUpForm = () => {
         <div>
             <form onSubmit={handleSignUpSubmit}>
                 <div className="container">
-                    <label for="name"><b>Name</b></label>
+                    <label htmlFor="name"><b>Name</b></label>
                     <input 
                     type="text" 
                     placeholder="Enter Name" 
@@ -33,7 +33,7 @@ const SignUpForm = () => {
                     onChange={(e) => setName(e.target.value)}
                     required/>
 
-                    <label for="email"><b>Email</b></label>
+                    <label htmlFor="email"><b>Email</b></label>
                     <input 
                     type="email" 
                     value={email}
@@ -42,7 +42,7 @@ const SignUpForm = () => {
                     name="email" 
                     required/>
 
-                    <label for="psw"><b>Password</b></label>
+                    <label htmlFor="psw"><b>Password</b></label>
                     <input 
                     type="password" 
                     value={password}
@@ -51,7 +51,7 @@ const SignUpForm = () => {
                     name="psw" 
                     required/>
 
-                    <label for="psw-repeat"><b>Repeat Password</b></label>
+                    <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
                     <input 
                     type="password" 
                     value={repeatPassword}
