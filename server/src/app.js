@@ -2,12 +2,16 @@ const createError = require("http-errors");
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+var dbConnectionFunction = require('./dbConnection');
 
 const routes = require("./api");
 
 const { Response } = require("./middlewares");
 
 const app = express();
+
+// establishing database connection
+dbConnectionFunction();
 
 app.use(logger("dev"));
 app.use(express.json());
