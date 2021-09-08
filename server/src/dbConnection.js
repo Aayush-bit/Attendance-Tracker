@@ -13,7 +13,6 @@ const dbConnectionFunction = () => {
     const db = mongoose.connection;
     db.once('open', () => {
         // connected
-        console.log("connected");
     })
     .on('error', err => console.error(err));
 }
