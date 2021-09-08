@@ -1,20 +1,24 @@
-var createError = require("http-errors");
-var express = require("express");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-var indexRouter = require("./api/index");
-var usersRouter = require("./api/users");
+const routes = require("./api");
 
-var app = express();
+const { Response } = require("./middlewares");
+
+const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(Response.middleware);
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.get("/", async (req, res, next) => {
+  res.dispatch.OK("Server is alive!");
+});
+app.use("/users", routes.userRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
