@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const url = `mongodb://${process.env.DBHOSTNAME}/${process.env.DBNAME}`;
+const url = `mongodb://${process.env.DBHOSTNAME}:${process.env.DBPORT}/${process.env.DBNAME}`;
 
 const dbConnectionFunction = () => {
     mongoose.connect(url, 
@@ -13,6 +13,7 @@ const dbConnectionFunction = () => {
     const db = mongoose.connection;
     db.once('open', () => {
         // connected
+        console.log("connected");
     })
     .on('error', err => console.error(err));
 }
